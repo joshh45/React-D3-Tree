@@ -9,7 +9,7 @@
 
 
 
-    <svg width="200" height="200"></svg>
+    <svg width="100" height="50"></svg>
 
   </head>
 
@@ -18,63 +18,34 @@
 <script>
 
 
-var spaceCircles = [30, 80, 120];
+var canvas = d3.select("body").append("svg")
+  .attr("width", 500)
+  .attr("height", 500);
 
-var svgContainer = d3.select("body").append("svg")
-                                .attr("width", 200)
-                                .attr("height", 200);
 
-var circles = svgContainer.selectAll("circle")
-                        .data(spaceCircles)
-                        .enter()
-                        .append("circle");
+// create diagonal path generator
+var diagonal = d3.svg.diagonal()
+  .source({x: 10, y: 10})
+  .target({x: 300, y: 300})
+  // these accessor functions allow me input cordinates
 
-var circleAttributes = circles
-                       .attr("cx", function (d) { return d; })
-                       .attr("cy", function (d) { return d; })
-                       .attr("r", 10 );
+// append to document
+canvas.append("path")
+  .attr("fill", "none")
+  .attr("stroke", "black")
+  // path generator
+  .attr("d", diagonal);
+  // need source and target
 
-// data sets spec specfies the center of x and y coordinate
 
-var line = svgContainer.append("line")
-.attr("x1", 30)
-.attr("y1", 0)
-.attr("x2", 500)
-.attr("y2", 500)
-.style("stroke-width", 5)
-.style("stroke", "black");
+// note this needs to be refactored for d3 v4
 
 
 
 
 
-var spaceCircles = [30, 70, 110];
-var treeData = [
-  {
-    "name": "Top Level",
-    "parent": "null",
-    "children": [
-      {
-        "name": "Level 2: A",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Son of A",
-            "parent": "Level 2: A"
-          },
-          {
-            "name": "Daughter of A",
-            "parent": "Level 2: A"
-          }
-        ]
-      },
-      {
-        "name": "Level 2: B",
-        "parent": "Top Level"
-      }
-    ]
-  }
-];
+
+
 
 </script>
 
