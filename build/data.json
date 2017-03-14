@@ -1,0 +1,20 @@
+{
+  "name": "Big Boss",
+  "children": [
+    {
+      "name": "Mini",
+      "children": [
+        {"name": "bo"},
+        {"name": "bo1"},
+        {"name": "bo2"}
+      ]
+    },
+    {
+      "name": "Small",
+      "children": [
+        {"name": "strong"},
+        {"name": "strong1"}
+      ]
+    }
+  ]
+}
